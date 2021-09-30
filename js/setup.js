@@ -17,11 +17,12 @@ var moveDown = false;
 var firstPersonMode = false;
 
 //set the camera position
-var Pos = new THREE.Vector3(-360, 700, 360);
+var Pos = new THREE.Vector3(-260, 400, 260);
 camera.position.set(Pos.x, Pos.y, Pos.z);
 
 // and the direction
 var Dir = new THREE.Vector3(0, 0, 0);
+var TargetDir = new THREE.Vector3(0,0,0);
 camera.lookAt(Dir.x, Dir.y, Dir.z);
 
 //create the webgl renderer
@@ -141,15 +142,3 @@ baseMesh.rotation.set(Math.PI / 2, 0, 0);
 baseMesh.receiveShadow = true;
 baseMesh.castShadow = false;
 scene.add(baseMesh);
-
-document.getElementById("info-panel").addEventListener("click", function () {
-    var infoBtn = document.getElementById("info-btn");
-    var infoContent = document.getElementById("info-content");
-    if (infoContent.style.display === "none") {
-        infoContent.style.display = "block";
-        infoBtn.innerHTML = "[hide]";
-    } else {
-        infoContent.style.display = "none";
-        infoBtn.innerHTML = "[show]";
-    }
-});

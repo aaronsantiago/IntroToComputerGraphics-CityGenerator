@@ -10,7 +10,7 @@ var moveSpeed = 4000;
 
 //Generator Logic
 var update = function () {
-    controls.update();
+    // controls.update();
 
     var time = performance.now();
     var delta = (time - prevTime) / 1000;
@@ -35,10 +35,21 @@ var update = function () {
     if (moveUp || moveDown) {
         velocity.y -= direction.y * moveSpeed * delta * 0.2;
     }
+    camera.position.set(
+      (camera.position.x + Pos.x)/2,
+      (camera.position.y + Pos.y)/2,
+      (camera.position.z + Pos.z)/2
+    )
+    Dir.set(
+      (Dir.x + TargetDir.x)/2,
+      (Dir.y + TargetDir.y)/2,
+      (Dir.z + TargetDir.z)/2
+    )
+    camera.lookAt(Dir);
 
-    keyboardControls.getObject().translateX(velocity.x * delta);
-    keyboardControls.getObject().translateZ(velocity.z * delta);
-    keyboardControls.getObject().translateY(velocity.y * delta);
+    // keyboardControls.getObject().translateX(velocity.x * delta);
+    // keyboardControls.getObject().translateZ(velocity.z * delta);
+    // keyboardControls.getObject().translateY(velocity.y * delta);
 
     prevTime = time;
 };
